@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+<link href="/css/globalstyle.css" rel="stylesheet"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+	<div th:replace="fragments/header :: header">&n</div>
+	
+	
+	
+	<div class="container" style="background-color: skyblue;">
+		<div class="panel panel-default">
+			<div class="panel-body">
+		<p th:inline="text">Sorry [[${#httpServletRequest.remoteUser}]], access denied</p>
+		
+			
+			</div>
+		</div>
+	
+	</div>
+	
+
+
+
+<!--Por tema de performance se cargan los script al final de la página para que se cargue la página primero -->
+	<script src="/js/jquery-3.4.1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.js"></script>
+</body>
+</html>

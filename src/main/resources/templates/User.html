@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5	">
+	<title>Phoenix Logistic</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}"/>
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+	<link href="/css/bootstrap-table.min.css" rel="stylesheet" th:href="@{/css/bootstrap-table.min.css}"/>
+	<script src="/js/jquery-3.4.1.js" th:href="@{/js/jquery-3.4.1.js}"></script>
+	<link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
+	<link href="/css/bootstrap-table.min.css" rel="stylesheet" th:href="@{/css/bootstrap-table.min.css}"/>
+	<script src="/js/jquery-3.4.1.js" th:href="@{/js/jquery-3.4.1.js}"></script>
+	<script src="/js/User.js" th:href="@{/js/User.js}"></script>
+	<script src="/js/User.js"></script>
+	
+	
+	<style>
+	html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
+	</style>
+	<body class="w3-light-grey">
+	          <!-- Top container -->
+	         <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+	          <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+	          <li><a href="login" onclick="document.getElementById('logout').submit();">Cerrar session</a></li>
+	        </div>
+	
+	        <!-- Sidebar/menu -->
+	        <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+	          <div class="w3-container w3-row">
+	            <div class="w3-col s4">
+	              <img src="" class="w3-circle w3-margin-right" style="width:46px">
+	            </div>
+	            <div class="w3-col s8 w3-bar">
+	              <span>Bienvenido, <strong>[[${#httpServletRequest.remoteUser}]]</strong></span><br>
+	              <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+	              <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
+	              <a sec:authorize="hasAuthority('ROLE_Admin')" href="User" class="w3-bar-item w3-button"><i class="fa fa-cog"></i></a>
+	            </div>
+	          </div>
+	          <hr>
+	          <div class="w3-container">
+	            <h5>Sala de trabajo</h5>
+	          </div>
+	          <div class="w3-bar-block">
+	            <a href="#" class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black" onclick="w3_close()" title="close menu"><i class="fa fa-remove fa-fw"></i>  Close Menu</a>
+	            <a sec:authorize="hasAuthority('ROLE_Admin')" href="User" class="w3-bar-item w3-button w3-padding w3-blue"><i class="fa fa-users fa-fw"></i> Usuarios </a>
+	            <a href="BL" class="w3-bar-item w3-button w3-padding"><i class="fa fa-eye fa-fw"></i> BL </a>
+	            <a href="AA_AGENTE_DE_ADUANA" class="w3-bar-item w3-button w3-padding"><i class="fa fa-users fa-fw"></i> Agente de Aduana </a>
+	            <a href="proveedor" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bullseye fa-fw"></i> Proveedor</a>
+	            <a href="Cliente" class="w3-bar-item w3-button w3-padding"><i class="fa fa-diamond fa-fw"></i> Cliente</a>
+	            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bell fa-fw"></i>  </a>
+	            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-bank fa-fw"></i>  </a>
+	            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-history fa-fw"></i>  </a>
+	            <a href="#" class="w3-bar-item w3-button w3-padding"><i class="fa fa-cog fa-fw"></i>  </a><br><br>
+	          </div>
+	        </nav>
+	
+	
+	        <!-- Overlay effect when opening sidebar on small screens -->
+	        <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+	
+	        <!-- !PAGE CONTENT! -->
+	        <div class="w3-main" style="margin-left:300px;margin-top:43px;">
+	
+	          <!-- Header -->
+	          <header class="w3-container" style="padding-top:22px">
+	            <h5><b><i class="fa fa-dashboard"></i> Mi sala de trabajo</b></h5>
+	          </header>
+			<div class="panel panel-default" id="panel1">
+			<div class="panel-body">
+				<h3>Administrador Usuarios</h3>	
+				<p>
+				<div class="btn-group">
+					<button type="button" class="btn btn-primary btn-sml" onclick="javascript:UsersController('list')">List</button>
+					<button type="button" class="btn btn-primary btn-sml" onclick="javascript:UsersController('get')">Buscar Usuario</button>
+					<button type="button" class="btn btn-primary btn-sml" onclick="javascript:UsersController('insert')">Nuevo Usuario</button>
+					<button type="button" class="btn btn-primary btn-sml" onclick="javascript:UsersController('update')">Actualizar Usuario</button>
+					<button sec:authorize="hasAuthority('ROLE_Admin')" type="button" class="btn btn-primary btn-sml" onclick="javascript:UsersController('delete')">Eliminar Usuario</button>
+					
+				</div>
+				<p>
+				<div class="alert alert-danger" id="msg" hidden="true">
+				</div>
+				<p>
+				<div class="input-group">
+					<span class="input-group-addon">Id Usuario</span>
+					<input type="number" class="form-control" id="user_id" >
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">Nombre de Usuario </span>
+					<input type="text" class="form-control" id="username" >
+				</div>
+				<div class="input-group">
+					<span class="input-group-addon">Password</span>
+					<input type="text" class="form-control" id="password" >
+				</div>
+					<div class="input-group">
+					<span class="input-group-addon">ROL</span>
+					<input type="text" class="form-control" id="rol" >
+				</div>
+										
+			</div>
+		</div>
+	
+	
+
+
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+		<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">Close</button>
+					<h4 class="modal-title">User list</h4>
+				</div>
+				<div class="modal-body">
+					<div class="table-responsive" style='height:100%' id='tableDivContainer'>
+						<table class="table table-condensed" id='userTable' data-toggle="table" data-height="299">
+							<thead><tr>
+							
+								<th data-field="user_id">Id de usuario</th>
+								<th data-field="username">Nombre Usuario</th>
+								<th data-field="password">Password</th>
+								<th data-field="rol">Rol</th>
+							</tr>
+							</thead>
+						</table>
+					</div>
+				</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>	
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<script type="text/javascript" src="/js/bootstrap.js" th:href="@{/js/bootstrap.js}"></script>
+	<script type="text/javascript" src="/js/bootstrap-table.min.js" th:href="@{/js/bootstrap-table.min.js}"></script>
+</body>
+</html>
