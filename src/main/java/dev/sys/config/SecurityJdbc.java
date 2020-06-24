@@ -26,9 +26,8 @@ public class SecurityJdbc extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 		.antMatchers("/User/delete","/BL/delete","/BL/list" ,"/BL/get","/User/get", "/User").hasAuthority("ROLE_Admin")
 		.antMatchers("/BL/insert","/User/insert","/User/list","/User/get","/User/update", "/BL/update").hasAnyAuthority("ROLE_Editor", "ROLE_Admin")
-		.antMatchers("/BL/list","/BL/get","/home","/index").hasAnyAuthority("ROLE_Admin","ROLE_Editor","ROLE_User")
-		.antMatchers("/images/logo.png").permitAll() 
-		.antMatchers( "/favicon.ico").permitAll()
+		.antMatchers("/BL/list","/BL/get","/index").hasAnyAuthority("ROLE_Admin","ROLE_Editor","ROLE_User")
+		.antMatchers( "/images/*").permitAll()
 		.antMatchers("/","/js/BL.js","/Aprobado","/js/User.js","/home").permitAll()
 		;
 		

@@ -15,8 +15,8 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5	">
 	<link href="/css/bootstrap.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>
 	<link href="/css/bootstrap-table.min.css" rel="stylesheet" th:href="@{/css/bootstrap-table.min.css}"/>
 	<script src="/js/jquery-3.4.1.js" th:href="@{/js/jquery-3.4.1.js}"></script>
-	<script src="/js/BL.js" th:href="@{/js/BL.js}"></script>
-	<script src="/js/BL.js"></script>
+	<script src="/js/Proveedor.js" th:href="@{/js/Proveedor.js}"></script>
+	<script src="/js/Proveedor.js"></script>
 	
 	
 	<style>
@@ -26,7 +26,7 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5	">
 	          <!-- Top container -->
 	         <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
 	          <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-	          <a class="w3-bar-item w3-right w3-button" onclick="document.getElementById('logout').submit();">Cerrar</a>
+	          <a class="w3-bar-item w3-right w3-button" th:href="@{/login}" th:action="@{/logout}" action="post">Cerrar</a>
 	        </div>
 	
 	        <!-- Sidebar/menu -->

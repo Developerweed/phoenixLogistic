@@ -1,5 +1,9 @@
 <!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5	">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
 	<title>Phoenix Logistic</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,18 +17,19 @@
 	html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 	</style>
 	<body class="w3-light-grey">
-		<div class="w3-bar w3-top w3-black w3-large" th:replace="fragments/header :: header"></div>
+		<!--  div class="w3-bar w3-top w3-black w3-large" th:replace="fragments/header :: header"></div-->
 	          <!-- Top container -->
-	        <!--  div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-	          <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-	          <span class="w3-bar-item w3-right">Logo</span>
-	        </div-->
+	        <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
+	          <button class="w3-bar-item w3-button w3-hide-large w3-hover-ntone w3-hover-text-light-grey" onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+	          <span class="w3-bar-item w3-right">Phoenix Logistic</span>
+	          <a class="w3-bar-item w3-right w3-button" th:href="@{/login}" th:action="@{/logout}" action="post">Cerrar</a>
+	        </div>
 	
 	        <!-- Sidebar/menu -->
 	        <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
 	          <div class="w3-container w3-row">
 	            <div class="w3-col s4">
-	              <img src="" class="w3-circle w3-margin-right" style="width:46px">
+	              <img src="/images/favicon.ico" class="w3-circle w3-margin-right" style="width:80px">
 	            </div>
 	            <div class="w3-col s8 w3-bar">
 	              <span>Bienvenido, <strong>[[${#httpServletRequest.remoteUser}]]</strong></span><br>
@@ -61,6 +66,7 @@
 	          <!-- Header -->
 	          <header class="w3-container" style="padding-top:22px">
 	            <h5><b><i class="fa fa-dashboard"></i> Mi sala de trabajo</b></h5>
+	            <img alt="logo" src="/images/logo.jpg" th:src="@{/images/logo.jpg}"/>
 	          </header>
 			<div class="btn-group">
 	          <div class="w3-row-padding w3-margin-bottom">
@@ -109,8 +115,6 @@
 	          overlayBg.style.display = "none";
 	        }
 	        </script>
-	<!-- <script src="/js/ingresoClientes.js" th:href="@{/js/ingresoClientes.js}"></script>
-	<script src="/js/Proveedor.js" th:href="@{/js/Proveedor.js}"></script>-->
-	<script src="/js/BL.js" th:href="@{/js/BL.js}"></script>
+	
 	</body>
 </html>
