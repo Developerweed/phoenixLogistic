@@ -58,7 +58,7 @@ function BLController(option){
 					$("#Peso").val(res.peso);
 					$("#Vol_cubico").val(res.vol_cubico);
 					$("#Mercaderia").val(res.mercaderia);
-					$("#tipo_carga").val(res.tipo_carga);
+					$("#Tipo_carga").val(res.tipo_carga);
 					$("#Fecha_salida").val(res.fecha_salida);
 					$("#Fecha_arribo").val(res.fecha_arribo);
 					$("#Unidades").val(res.unidades);
